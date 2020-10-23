@@ -203,8 +203,12 @@ void IS31FL3737_update_pwm_buffers(uint8_t addr1, uint8_t addr2) {
         IS31FL3737_write_register(addr1, ISSI_COMMANDREGISTER_WRITELOCK, 0xC5);
         IS31FL3737_write_register(addr1, ISSI_COMMANDREGISTER, ISSI_PAGE_PWM);
 
+        IS31FL3737_write_register(addr2, ISSI_COMMANDREGISTER_WRITELOCK, 0xC5);
+        IS31FL3737_write_register(addr2, ISSI_COMMANDREGISTER, ISSI_PAGE_PWM);
+
+
         IS31FL3737_write_pwm_buffer(addr1, g_pwm_buffer[0]);
-        // IS31FL3737_write_pwm_buffer(addr2, g_pwm_buffer[1]);
+        IS31FL3737_write_pwm_buffer(addr2, g_pwm_buffer[1]);
     }
     g_pwm_buffer_update_required = false;
 }
@@ -214,10 +218,12 @@ void IS31FL3737_update_led_control_registers(uint8_t addr1, uint8_t addr2) {
         // Firstly we need to unlock the command register and select PG0
         IS31FL3737_write_register(addr1, ISSI_COMMANDREGISTER_WRITELOCK, 0xC5);
         IS31FL3737_write_register(addr1, ISSI_COMMANDREGISTER, ISSI_PAGE_LEDCONTROL);
+
+        IS31FL3737_write_register(addr2, ISSI_COMMANDREGISTER_WRITELOCK, 0xC5);
+        IS31FL3737_write_register(addr2, ISSI_COMMANDREGISTER, ISSI_PAGE_LEDCONTROL);
         for (int i = 0; i < 24; i++) {
             IS31FL3737_write_register(addr1, i, g_led_control_registers[0][i]);
-            // IS31FL3737_write_register(addr2, i, g_led_control_registers[1][i]);
+            IS31FL3737_write_register(addr2, i, g_led_control_registers[1][i]);
         }
-        g_led_control_registers_update_required = false;
     }
 }
