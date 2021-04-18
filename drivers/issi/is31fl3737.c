@@ -143,7 +143,7 @@ void IS31FL3737_init(uint8_t addr) {
     // Select PG3
     IS31FL3737_write_register(addr, ISSI_COMMANDREGISTER, ISSI_PAGE_FUNCTION);
     // Set global current to maximum.
-    IS31FL3737_write_register(addr, ISSI_REG_GLOBALCURRENT, 0xFF);
+    IS31FL3737_write_register(addr, ISSI_REG_GLOBALCURRENT, 0x07);
     // Disable software shutdown.
     IS31FL3737_write_register(addr, ISSI_REG_CONFIGURATION, 0x01);
 
