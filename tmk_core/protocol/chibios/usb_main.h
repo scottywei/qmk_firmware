@@ -26,6 +26,9 @@
 #    define USB_DRIVER USBD1
 #endif // USB_DRIVER
 
+/* The USB Configuration */
+extern const USBConfig usbcfg;
+
 /* Initialize the USB driver and bus */
 void init_usb_driver(USBDriver *usbp);
 

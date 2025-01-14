@@ -329,7 +329,7 @@ static __attribute__((unused)) void dummy_cb(USBDriver *usbp) {
     (void)usbp;
 }
 
-static const USBConfig usbcfg = {
+const USBConfig usbcfg = {
     usb_event_cb,          /* USB events callback */
     usb_get_descriptor_cb, /* Device GET_DESCRIPTOR request callback */
     usb_requests_hook_cb,  /* Requests hook callback */
