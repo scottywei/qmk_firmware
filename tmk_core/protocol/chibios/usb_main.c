@@ -333,10 +333,6 @@ const USBConfig usbcfg = {
     usb_event_cb,          /* USB events callback */
     usb_get_descriptor_cb, /* Device GET_DESCRIPTOR request callback */
     usb_requests_hook_cb,  /* Requests hook callback */
-#if STM32_USB_USE_OTG1 == TRUE || STM32_USB_USE_OTG2 == TRUE
-    dummy_cb, /* Workaround for OTG Peripherals not servicing new interrupts
-    after resuming from suspend. */
-#endif
 };
 
 void init_usb_driver(USBDriver *usbp) {
